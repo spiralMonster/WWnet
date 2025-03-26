@@ -133,7 +133,6 @@ class WindowAndWallConvolutionLayer(Layer):
             window_dimensions=window_dimensions
         )(wall=wall_conv,window=window_conv)
        
-        
         return out
         
     def compute_output_shape(self,input_shape):

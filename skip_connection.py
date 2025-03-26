@@ -63,7 +63,3 @@ class SkipConnectionLayer(Layer):
         return config
 
 
-        
-    
-        
-        

@@ -32,8 +32,7 @@ class RandomizedWindowAndWallConvolutionLayer(Layer):
             )
             self.window_wall_conv_layers.append(layer)
             
-        self.stack=[]
-
+       
     
     def build(self,input_shape):
         #Building WindowAndWallConvolution Layers:
@@ -44,13 +43,14 @@ class RandomizedWindowAndWallConvolutionLayer(Layer):
             
     
     def call(self,inputs):
+        stack=[]
         # WindowAndWallConvolutionLayer:
         for ind in range(self.number_window_wall_instances):
             out=self.window_wall_conv_layers[ind](inputs)
-            self.stack.append(out)
+            stack.append(out)
             
         #Stacking window_wall_conv_layers:
-        final_out=Concatenate(axis=-1)(self.stack)
+        final_out=Concatenate(axis=-1)(stack)
         return final_out
         
     def compute_output_shape(self,input_shape):
